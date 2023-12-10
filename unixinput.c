@@ -527,16 +527,15 @@ static void input_file(unsigned int sample_rate, unsigned int overlap,
         if (!i)
             break;
         if (i > 0) {
-            if(integer_only)
-        {
+            if(integer_only) {
                 fbuf_cnt = i/sizeof(buffer[0]);
-        }
-            else
-            {
-                for (; (unsigned int) i >= sizeof(buffer[0]); i -= sizeof(buffer[0]), sp++)
+            } else {
+                for (; (unsigned int) i >= sizeof(buffer[0]); i -= sizeof(buffer[0]), sp++) {
                     fbuf[fbuf_cnt++] = (*sp) * (1.0f/32768.0f);
-                if (i)
+                }
+                if (i) {
                     fprintf(stderr, "warning: noninteger number of samples read\n");
+                }
             }
             if (fbuf_cnt > overlap) {
                 process_buffer(fbuf, buffer, fbuf_cnt-overlap);
