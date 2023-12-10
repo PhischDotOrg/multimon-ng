@@ -843,8 +843,10 @@ intypefound:
             if (dem[i]->overlap > overlap)
                 overlap = dem[i]->overlap;
         }
-    if (!quietflg)
+    if (!quietflg) {
         fprintf(stdout, "\n");
+        fflush(stdout);
+    }
 
     if (optind < argc && !strcmp(argv[optind], "-"))
     {
