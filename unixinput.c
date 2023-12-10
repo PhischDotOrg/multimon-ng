@@ -800,16 +800,16 @@ intypefound:
     }
 
 
-    if ( !quietflg )
-    { // pay heed to the quietflg
-    fprintf(stderr, "multimon-ng 1.3.0\n"
-        "  (C) 1996/1997 by Tom Sailer HB9JNX/AE4WA\n"
-        "  (C) 2012-2023 by Elias Oenal\n"
-        "Available demodulators:");
-    for (i = 0; (unsigned int) i < NUMDEMOD; i++) {
-        fprintf(stderr, " %s", dem[i]->name);
-    }
-    fprintf(stderr, "\n");
+    if ( !quietflg ) { // pay heed to the quietflg
+        fprintf(stderr, "multimon-ng 1.3.0\n"
+            "  (C) 1996/1997 by Tom Sailer HB9JNX/AE4WA\n"
+            "  (C) 2012-2023 by Elias Oenal\n"
+            "Available demodulators:");
+
+        for (i = 0; (unsigned int) i < NUMDEMOD; i++) {
+            fprintf(stderr, " %s", dem[i]->name);
+        }
+        fprintf(stderr, "\n");
     }
 
     if (errflg) {
@@ -819,8 +819,9 @@ intypefound:
     if (mask_first)
         memset(dem_mask, 0xff, sizeof(dem_mask));
 
-    if (!quietflg)
+    if (!quietflg) {
         fprintf(stdout, "Enabled demodulators:");
+    }
     for (i = 0; (unsigned int) i < NUMDEMOD; i++)
         if (MASK_ISSET(i)) {
             if (!quietflg)
