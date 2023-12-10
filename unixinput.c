@@ -225,7 +225,7 @@ static void input_sound(unsigned int sample_rate, unsigned int overlap,
                 for (; i >= sizeof(buffer[0]); i -= sizeof(buffer[0]), sp++)
                     fbuf[fbuf_cnt++] = (*sp) * (1.0/32768.0);
                 if (i)
-                    fprintf(stderr, "warning: noninteger number of samples read\n");
+                    fprintf(stderr, "%s(): warning: noninteger number of samples read\n", __func__);
             }
             if (fbuf_cnt > overlap) {
                 process_buffer(fbuf, buffer, fbuf_cnt-overlap);
@@ -299,7 +299,7 @@ static void input_sound(unsigned int sample_rate, unsigned int overlap,
                 for (; (unsigned int) i >= sizeof(buffer[0]); i -= sizeof(buffer[0]), sp++)
                     fbuf[fbuf_cnt++] = (*sp) * (1.0/32768.0);
                 if (i)
-                    fprintf(stderr, "warning: noninteger number of samples read\n");
+                    fprintf(stderr, "%s(): warning: noninteger number of samples read\n", __func__);
             }
             if (fbuf_cnt > overlap) {
                 process_buffer(fbuf, buffer, fbuf_cnt-overlap);
@@ -398,7 +398,7 @@ static void input_sound(unsigned int sample_rate, unsigned int overlap,
             //                for (; i >= sizeof(b.b[0]); i -= sizeof(b.b[0]), sp++)
             //                    fbuf[fbuf_cnt++] = ((int)(*bp)-0x80) * (1.0/128.0);
             //                if (i)
-            //                    fprintf(stderr, "warning: noninteger number of samples read\n");
+            //                    fprintf(stderr, "%s(): warning: noninteger number of samples read\n", __func__);
             //                if (fbuf_cnt > overlap) {
             //                    process_buffer(fbuf, fbuf_cnt-overlap);
             //                    memmove(fbuf, fbuf+fbuf_cnt-overlap, overlap*sizeof(fbuf[0]));
@@ -423,7 +423,7 @@ static void input_sound(unsigned int sample_rate, unsigned int overlap,
                     for (; i >= sizeof(b.s[0]); i -= sizeof(b.s[0]), sp++)
                         fbuf[fbuf_cnt++] = (*sp) * (1.0/32768.0);
                     if (i)
-                        fprintf(stderr, "warning: noninteger number of samples read\n");
+                        fprintf(stderr, "%s(): warning: noninteger number of samples read\n", __func__);
                 }
                 if (fbuf_cnt > overlap) {
                     process_buffer(fbuf, b.s, fbuf_cnt-overlap);
@@ -534,7 +534,7 @@ static void input_file(unsigned int sample_rate, unsigned int overlap,
                     fbuf[fbuf_cnt++] = (*sp) * (1.0f/32768.0f);
                 }
                 if (i) {
-                    fprintf(stderr, "warning: noninteger number of samples read\n");
+                    fprintf(stderr, "%s(): warning: noninteger number of samples read\n", __func__);
                 }
             }
             if (fbuf_cnt > overlap) {
